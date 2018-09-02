@@ -1,0 +1,15 @@
+<div class="app__container">
+	<div class="app__nav">
+		<div class="app__nav-button app__nav-button--started" *ngIf="isBegging$ | async" (click)="startGame()">Начать игру</div>
+		<div class="app__nav-button app__nav-button--restarted" *ngIf="wasStarted$ | async" (click)="restartGame()">Перезапустить игру</div>
+		<div class="app__nav-button app__nav-button--startedover" *ngIf="wasEnded$ | async" (click)="restartGame()">Начать игру заново</div>
+	</div>
+
+	<div class="app__result">
+		<span>{{resultMessage$ | async}}</span>
+	</div>
+
+	<div class="app__game-container" [ngClass]="{ 'app__game-container--active': isActive$ | async }">
+		<app-battlefield [player]="player" [opponent]="opponent"></app-battlefield>
+	</div>
+</div>

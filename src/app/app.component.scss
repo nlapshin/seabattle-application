@@ -1,0 +1,50 @@
+@import './app.constants'; 
+
+.app {
+	overflow: hidden;
+
+	&__nav {
+		display: flex;
+		align-items: center;
+  	justify-content: center;
+
+  	min-height: $header-height;
+
+  	&-button {
+			padding: 10px 40px;
+			border-radius: 10px;
+			font-size: 18px;
+			text-decoration: none;
+		
+			color: $button-color;
+			background-color: $button-background-color;
+
+			cursor: pointer;
+			user-select: none;
+  	}
+	}
+
+	&__result {
+		height: $result-height;
+		min-height: $result-height;
+
+		margin-top: 10px;
+
+		text-align: center;
+
+		color: $result-color;
+	}
+	
+	&__game-container {
+		display: flex;
+		align-items: center;
+  	justify-content: center;
+
+  	visibility: hidden;
+		
+		&--active {
+			visibility: visible;
+		}
+	}
+
+}

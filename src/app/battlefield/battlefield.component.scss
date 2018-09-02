@@ -1,0 +1,56 @@
+@import './battlefield.constants';
+
+.battlefield {
+	&-wrapper {
+		display: flex;
+	}
+}
+
+app-battlefield {
+	&-field {
+		height: $field-size;
+		width: $field-size;
+
+		margin: 20px;
+
+		border: $field-border-width solid $field-border-color;
+	}
+}
+ 
+.battlefield {	
+ 	&-row {
+	 	height: $field-cell-height;
+	}
+
+	&-cell {
+	 	display: inline-block;
+
+		height: $field-cell-height;
+		width: $field-cell-width;
+
+		box-sizing: border-box;
+
+		border: $field-cell-border-width solid $field-cell-color;
+
+		margin: 0;
+
+		&--clickable {
+			cursor: pointer;
+		}
+
+		&--ship {
+			background-color: $field-cell-ship-color;
+		}
+
+		&--missed {
+			background-color: $field-cell-missed-color;
+		}
+
+		&--damaged {
+			background-color: $field-cell-damaged-color;
+		}
+	}
+}
+
+
+

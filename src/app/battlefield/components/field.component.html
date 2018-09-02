@@ -1,0 +1,8 @@
+<div app-battlefield-row
+	*ngFor="let row of field$ | async;trackBy: trackByRow"
+	[row]="row"
+	[player]="player"
+	[disabled]="disabled"
+	[hidden]="hidden"
+	[clickable]="clickable"
+></div>

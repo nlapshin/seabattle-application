@@ -1,0 +1,14 @@
+<div class="battlefield-wrapper">
+	<app-battlefield-field
+		*ngFor="let player of players$ | async"
+		[size]="size"
+		[ships]="ships"
+		[disabled]="disabled$ | async"
+		[player]="player.name"
+		[opponent]="player.opponent"
+		[autopass]="player.autopass"
+		[hidden]="player.hidden"
+		[clickable]="player.clickable"
+	>
+	</app-battlefield-field>
+</div>
