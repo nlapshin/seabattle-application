@@ -9,7 +9,7 @@ import * as fromAppStore from '../store';
 import { GameplayPlayer } from '../store/gameplay/models/player';
 import * as gameplayActions from '../store/gameplay/actions';
 
-import { BattlefieldState } from './store/model'; 
+import { BattlefieldState } from './store/model';
 import * as fromBattlefieldStore from './store';
 import * as battlefieldActions from './store/actions';
 
@@ -24,36 +24,36 @@ export class BattlefieldComponent implements OnInit {
   @Input() player: string
   @Input() opponent: string
 
-	public size: number = 10
-	public ships: string[] = [ "D", "D", "L", "I" ]
+  public size: number = 10
+  public ships: string[] = ["D", "D", "L", "I"]
 
-	public players$: Observable<any>
+  public players$: Observable<any>
   public disabled$: Observable<boolean>
 
   constructor(
-    private appStore: Store<AppState>, 
-    private battlefieldStore: Store<BattlefieldState>, 
-    private BattlefieldGuardService: BattlefieldGuardService) {}
+    private appStore: Store<AppState>,
+    private battlefieldStore: Store<BattlefieldState>,
+    private BattlefieldGuardService: BattlefieldGuardService) { }
 
   ngOnInit() {
-  	this.players$ = this.appStore.pipe(select(fromAppStore.selectGameplayPlayers), map(this.mapPlayers.bind(this)));
+    this.players$ = this.appStore.pipe(select(fromAppStore.selectGameplayPlayers), map(this.mapPlayers.bind(this)));
     this.disabled$ = this.appStore.pipe(select(fromAppStore.selectGameplayWasEnded));
   }
 
   mapPlayers(players: GameplayPlayer[]) {
-  	return players.map((player, index) => {
-  		let name = player.name;
+    return players.map((player, index) => {
+      let name = player.name;
       let isEnemy = player.role === "computer";
 
       let opponent = players.find(elem => elem.name !== player.name);
 
-  		return {
-  			name: name,
-  			opponent: opponent ? opponent.name : "",
-  			autopass: isEnemy,
-  			hidden: isEnemy,
-  			clickable: isEnemy
-  		}
-  	});
+      return {
+        name: name,
+        opponent: opponent ? opponent.name : "",
+        autopass: isEnemy,
+        hidden: isEnemy,
+        clickable: isEnemy
+      }
+    });
   }
 }

@@ -11,7 +11,7 @@ import * as fromAppStore from './store';
 import * as gameplayActions from './store/gameplay/actions';
 
 describe('AppComponent', () => {
-	let component: AppComponent;
+  let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let appStore: Store<AppState>;
 
@@ -21,14 +21,14 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-      	StoreModule.forRoot(appReducers),
+        StoreModule.forRoot(appReducers),
         BattlefieldModule
       ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-  	appStore = TestBed.get(Store);
+    appStore = TestBed.get(Store);
 
     spyOn(appStore, 'dispatch').and.callThrough();
 
@@ -42,9 +42,9 @@ describe('AppComponent', () => {
   }));
 
   it('should show create game button after start component', async(() => {
-  	fixture.detectChanges();
+    fixture.detectChanges();
 
-  	fixture.whenStable().then(() => {
+    fixture.whenStable().then(() => {
       fixture.detectChanges();
 
       const element = fixture.debugElement.nativeElement;
@@ -58,9 +58,9 @@ describe('AppComponent', () => {
   }));
 
   it('should show game field after start game and add button restart game', async(() => {
-  	fixture.detectChanges();
+    fixture.detectChanges();
 
-  	fixture.whenStable().then(() => {
+    fixture.whenStable().then(() => {
       component.startGame();
 
       fixture.detectChanges();
@@ -76,9 +76,9 @@ describe('AppComponent', () => {
   }));
 
   it('should show game field after restart game and add button restart game', async(() => {
-  	fixture.detectChanges();
+    fixture.detectChanges();
 
-  	fixture.whenStable().then(() => {
+    fixture.whenStable().then(() => {
       component.startGame();
       fixture.detectChanges();
 
@@ -96,12 +96,12 @@ describe('AppComponent', () => {
   }));
 
   it('should show button start game again and show winner after game is over', async(() => {
-  	fixture.detectChanges();
+    fixture.detectChanges();
 
-  	fixture.whenStable().then(() => {
+    fixture.whenStable().then(() => {
       const actionPlayerWin = new gameplayActions.EndGame({ winner: component.player });
 
-    	appStore.dispatch(actionPlayerWin);
+      appStore.dispatch(actionPlayerWin);
       fixture.detectChanges();
 
       let element = fixture.debugElement.nativeElement;

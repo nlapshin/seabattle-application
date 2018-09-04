@@ -10,7 +10,7 @@ import { AppState } from '../../store/model';
 import * as fromAppStore from '../../store';
 import * as gameplayActions from '../../store/gameplay/actions';
 
-import { BattlefieldState } from '../store/model'; 
+import { BattlefieldState } from '../store/model';
 import * as fromBattlefieldStore from '../store';
 import * as battlefieldActions from '../store/actions';
 
@@ -35,8 +35,8 @@ export class BattlefieldFieldComponent implements OnInit {
   public field$: Observable<IField>
 
   constructor(
-    private appStore: Store<AppState>, 
-    private battlefieldStore: Store<BattlefieldState>, 
+    private appStore: Store<AppState>,
+    private battlefieldStore: Store<BattlefieldState>,
     private BattlefieldAutopassService: BattlefieldAutopassService
   ) {
 
@@ -46,9 +46,9 @@ export class BattlefieldFieldComponent implements OnInit {
     this.appStore.pipe(select(fromAppStore.selectGameplayWasStarted)).subscribe((started) => {
       if (started === false) return;
 
-      this.battlefieldStore.dispatch(new battlefieldActions.CreateFieldWithRandomShips({ 
-        name: this.player, 
-        size: this.size, 
+      this.battlefieldStore.dispatch(new battlefieldActions.CreateFieldWithRandomShips({
+        name: this.player,
+        size: this.size,
         ships: this.ships
       }));
     });

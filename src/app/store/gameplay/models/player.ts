@@ -1,4 +1,4 @@
 export interface GameplayPlayer {
-	name: string;
-	role: string;
+  name: string;
+  role: string;
 }

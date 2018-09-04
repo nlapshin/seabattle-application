@@ -8,7 +8,7 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display started button and hidden game container', async() => {
+  it('should display started button and hidden game container', async () => {
     page.navigateTo();
 
     await browser.waitForAngular();
@@ -17,7 +17,7 @@ describe('workspace-project App', () => {
 
     expect(appContainer.isPresent()).toBe(true);
 
-  	let startedButton = page.getStartButton();
+    let startedButton = page.getStartButton();
     let restartedButton = page.getRestartButton();
     let startedoverButton = page.getStartedOverButton();
 
@@ -28,15 +28,15 @@ describe('workspace-project App', () => {
     let gameContainer = page.getGameContainer();
 
     expect(gameContainer.isPresent()).toBe(true);
- 		expect(gameContainer.isDisplayed()).toBe(false);
+    expect(gameContainer.isDisplayed()).toBe(false);
   });
 
-  it('should display game container after started game and hidden started button', async() => {
+  it('should display game container after started game and hidden started button', async () => {
     page.navigateTo();
 
     await browser.waitForAngular();
 
-  	let startedButton = page.getStartButton();
+    let startedButton = page.getStartButton();
     let restartedButton = page.getRestartButton();
     let startedoverButton = page.getStartedOverButton();
 
@@ -51,15 +51,15 @@ describe('workspace-project App', () => {
     let gameContainer = page.getGameContainer();
 
     expect(gameContainer.isPresent()).toBe(true);
- 		expect(gameContainer.isDisplayed()).toBe(true);
+    expect(gameContainer.isDisplayed()).toBe(true);
   });
 
-  it('should form seabattle fields after start game', async() => {
+  it('should form seabattle fields after start game', async () => {
     page.navigateTo();
 
     await browser.waitForAngular();
 
-  	let startedButton = page.getStartButton();
+    let startedButton = page.getStartButton();
     startedButton.click();
 
     await browser.waitForAngular();
@@ -71,12 +71,12 @@ describe('workspace-project App', () => {
     expect(fields.count()).toBe(2);
   });
 
-  it('should mark enemy cell after click to him', async() => {
+  it('should mark enemy cell after click to him', async () => {
     page.navigateTo();
 
     await browser.waitForAngular();
 
-  	let startedButton = page.getStartButton();
+    let startedButton = page.getStartButton();
     startedButton.click();
 
     await browser.waitForAngular();
@@ -89,12 +89,12 @@ describe('workspace-project App', () => {
     expect(page.getEnemyFreeCells().count()).toBe(99);
   });
 
-  it('should emulate battlefield gameplay', async() => {
+  it('should emulate battlefield gameplay', async () => {
     page.navigateTo();
 
     await browser.waitForAngular();
 
-  	await page.battlefieldGameEmulate();
+    await page.battlefieldGameEmulate();
 
     let result = await page.getGameResult();
     let playerDamaged = await page.getPlayerDamagedCells().count();
@@ -107,9 +107,9 @@ describe('workspace-project App', () => {
     expect(result).not.toBe('');
 
     if (playerDamaged < enemyDamaged) {
-    	expect(result).toBe('Игра окончена. Вы выиграли.');
+      expect(result).toBe('Игра окончена. Вы выиграли.');
     } else {
-    	expect(result).toBe('Игра окончена. Вы проиграли.');
+      expect(result).toBe('Игра окончена. Вы проиграли.');
     };
 
     expect(startedButton.isPresent()).toBe(false);
@@ -117,7 +117,7 @@ describe('workspace-project App', () => {
     expect(startedoverButton.isPresent()).toBe(true);
   });
 
-  it('should restarted game after end game', async() => {
+  it('should restarted game after end game', async () => {
     page.navigateTo();
 
     await browser.waitForAngular();
@@ -125,10 +125,10 @@ describe('workspace-project App', () => {
     await page.battlefieldGameEmulate();
 
     let playerFreeCellsCount = await page.getPlayerFreeCells().count();
-		let enemyFreeCellsCount = await page.getEnemyFreeCells().count();
+    let enemyFreeCellsCount = await page.getEnemyFreeCells().count();
 
-		expect(playerFreeCellsCount).not.toBe(100);
-		expect(enemyFreeCellsCount).not.toBe(100);
+    expect(playerFreeCellsCount).not.toBe(100);
+    expect(enemyFreeCellsCount).not.toBe(100);
 
     let startedoverButton = page.getStartedOverButton();
     startedoverButton.click();
@@ -136,15 +136,9 @@ describe('workspace-project App', () => {
     await browser.waitForAngular();
 
     playerFreeCellsCount = await page.getPlayerFreeCells().count();
-		enemyFreeCellsCount = await page.getEnemyFreeCells().count();
+    enemyFreeCellsCount = await page.getEnemyFreeCells().count();
 
-		expect(playerFreeCellsCount).toBe(100);
-		expect(enemyFreeCellsCount).toBe(100);
+    expect(playerFreeCellsCount).toBe(100);
+    expect(enemyFreeCellsCount).toBe(100);
   });
 });
-
-
-    
-
-
-    

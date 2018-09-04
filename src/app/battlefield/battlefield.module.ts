@@ -18,7 +18,7 @@ import { BattlefieldAutopassService } from './services/autopass.service';
     StoreModule.forFeature('battlefield', battlefieldReducers)
   ],
   declarations: [
-  	BattlefieldComponent,
+    BattlefieldComponent,
     BattlefieldFieldComponent,
     BattlefieldRowComponent,
     BattlefieldCellComponent
@@ -28,7 +28,7 @@ import { BattlefieldAutopassService } from './services/autopass.service';
     BattlefieldAutopassService
   ],
   exports: [
-  	BattlefieldComponent
+    BattlefieldComponent
   ]
 })
 export class BattlefieldModule { }

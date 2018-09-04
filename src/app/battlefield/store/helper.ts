@@ -7,13 +7,13 @@ import { IField } from '../models/field';
 import { Field } from '../classes/field';
 import { createShip } from '../classes/ships';
 
-export function makeFieldWithRandomLocationShips(size: number = 10, ships: string[]) : IField {
+export function makeFieldWithRandomLocationShips(size: number = 10, ships: string[]): IField {
   let fieldInst = new Field(size);
 
   ships.forEach(stype => {
     let ship = createShip(stype);
 
-    while(true) {
+    while (true) {
       ship.cleanCoords();
 
       let { x: xstart, y: ystart } = fieldInst.getRandomFieldCoord();
@@ -21,8 +21,8 @@ export function makeFieldWithRandomLocationShips(size: number = 10, ships: strin
 
       ship.fillCoords(xstart, ystart, rotateStart);
       let shipCoords = ship.getCoords();
-      
-      if(fieldInst.checkCorrectCoords(shipCoords)) {
+
+      if (fieldInst.checkCorrectCoords(shipCoords)) {
         fieldInst.addShipToField(shipCoords);
 
         break;
@@ -33,8 +33,8 @@ export function makeFieldWithRandomLocationShips(size: number = 10, ships: strin
   return fieldInst.getField();
 }
 
-export function selectCell(field: IField, coord: ICoord) : IField {
-	return field.map(row => {
+export function selectCell(field: IField, coord: ICoord): IField {
+  return field.map(row => {
     return row.map(cell => {
       if (cell.x === coord.x && cell.y === coord.y) {
         let updateData = {
@@ -49,7 +49,7 @@ export function selectCell(field: IField, coord: ICoord) : IField {
   });
 }
 
-export function selectRandomFreeCell(field: IField) : IField {
+export function selectRandomFreeCell(field: IField): IField {
   let freeCells = flatten(field).filter(cell => cell.status === CellStatus.EMPTY);
   let randomCellIndex = random(freeCells.length - 1);
 
@@ -58,8 +58,8 @@ export function selectRandomFreeCell(field: IField) : IField {
   return selectCell(field, { x: freeCell.x, y: freeCell.y });
 }
 
-function generateRandomRotate() : number {
-  let rotates = [ 0, 90, 180, 270 ];
+function generateRandomRotate(): number {
+  let rotates = [0, 90, 180, 270];
 
   return shuffle(rotates)[random(rotates.length - 1)];
 }

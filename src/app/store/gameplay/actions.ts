@@ -2,15 +2,15 @@ import { Action } from '@ngrx/store';
 import { GameplayPlayer } from './models/player';
 
 interface EndGamePayload {
-	winner: string
+  winner: string
 }
 
 interface AddPlayerPayload {
-	player: GameplayPlayer
+  player: GameplayPlayer
 }
 
 interface AddPlayersPayload {
-	players: GameplayPlayer[]
+  players: GameplayPlayer[]
 }
 
 export const START_GAME = 'Start game';
@@ -27,7 +27,7 @@ export class StartGame implements Action {
 
 export class EndGame implements Action {
   readonly type = END_GAME;
-  constructor(public payload: EndGamePayload) {}
+  constructor(public payload: EndGamePayload) { }
 }
 
 export class ResetGame implements Action {
@@ -36,12 +36,12 @@ export class ResetGame implements Action {
 
 export class AddPlayer implements Action {
   readonly type = ADD_PLAYER;
-  constructor(public payload: AddPlayerPayload) {}
+  constructor(public payload: AddPlayerPayload) { }
 }
 
 export class AddPlayers implements Action {
   readonly type = ADD_PLAYERS;
-  constructor(public payload: AddPlayersPayload) {}
+  constructor(public payload: AddPlayersPayload) { }
 }
 
 export class ChangeStep implements Action {

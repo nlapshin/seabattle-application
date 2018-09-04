@@ -24,7 +24,7 @@ describe('The gameplay selectors', () => {
       };
 
       expect(fromSelectors.selectGameplayIsBegging(store)).toBe(false);
-    }); 
+    });
   });
 
   describe("selectGameplayIsActive", () => {
@@ -48,7 +48,7 @@ describe('The gameplay selectors', () => {
       };
 
       expect(fromSelectors.selectGameplayIsActive(store)).toBe(false);
-    }); 
+    });
   });
 
   describe("selectGameplayWasEnded", () => {
@@ -72,7 +72,7 @@ describe('The gameplay selectors', () => {
       };
 
       expect(fromSelectors.selectGameplayWasEnded(store)).toBe(false);
-    }); 
+    });
   });
 
   describe("selectGameplayPlayers", () => {
@@ -80,9 +80,9 @@ describe('The gameplay selectors', () => {
       const store: GameplayStore = {
         state: "",
         step: "",
-        players: [ 
-          { name: "player1", role: "player" }, 
-          { name: "player2", role: "player" } 
+        players: [
+          { name: "player1", role: "player" },
+          { name: "player2", role: "player" }
         ],
         winner: ""
       };
@@ -96,9 +96,9 @@ describe('The gameplay selectors', () => {
       const store: GameplayStore = {
         state: "",
         step: "player1",
-        players: [ 
-          { name: "player1", role: "player" }, 
-          { name: "player2", role: "player" } 
+        players: [
+          { name: "player1", role: "player" },
+          { name: "player2", role: "player" }
         ],
         winner: ""
       };
@@ -114,9 +114,9 @@ describe('The gameplay selectors', () => {
       const store: GameplayStore = {
         state: "",
         step: "player1",
-        players: [ 
-          { name: "player1", role: "player" }, 
-          { name: "player2", role: "player" } 
+        players: [
+          { name: "player1", role: "player" },
+          { name: "player2", role: "player" }
         ],
         winner: "player1"
       };

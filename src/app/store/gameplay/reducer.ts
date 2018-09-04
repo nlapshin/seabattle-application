@@ -4,18 +4,18 @@ import * as fromActions from './actions';
 import { GameplayStore } from './models/store';
 
 export const initialState: GameplayStore = {
-	state: "",
-	step: "",
+  state: "",
+  step: "",
   winner: "",
-	players: []
+  players: []
 };
 
 export function gameplayReducer(state: GameplayStore = initialState, action) {
   switch (action.type) {
     case fromActions.START_GAME: {
-      const data = { 
-        state: "started", 
-        step: state.players.length ? [ ...state.players ][0].name : "",
+      const data = {
+        state: "started",
+        step: state.players.length ? [...state.players][0].name : "",
         winner: ""
       };
 
@@ -30,8 +30,8 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
     }
 
     case fromActions.RESET_GAME: {
-      const data = { 
-        state: "", 
+      const data = {
+        state: "",
         step: "",
         winner: ""
       };
@@ -45,7 +45,7 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
 
       newState.players = addPlayer(player, newState.players);
 
-      return newState; 
+      return newState;
     }
 
     case fromActions.ADD_PLAYERS: {
@@ -54,7 +54,7 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
 
       newState.players = addPlayers(players, newState.players);
 
-      return newState; 
+      return newState;
     }
 
     case fromActions.CHANGE_STEP: {
@@ -77,5 +77,5 @@ function addPlayers(newPlayers, oldPlayers) {
 }
 
 function addPlayer(player, players) {
-  return players.some(elem => elem.name === player.name) ? players : [ ...players, player ];
+  return players.some(elem => elem.name === player.name) ? players : [...players, player];
 }

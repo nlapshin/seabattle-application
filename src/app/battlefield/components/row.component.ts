@@ -15,9 +15,9 @@ export class BattlefieldRowComponent implements OnInit {
   @Input() hidden: boolean
   @Input() clickable: boolean
 
-  @HostBinding(`class.battlefield-row`) public elemClass = true 
+  @HostBinding(`class.battlefield-row`) public elemClass = true
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() { }
 

@@ -7,7 +7,7 @@ import { AppState } from '../../store/model';
 import * as fromAppStore from '../../store';
 import * as gameplayActions from '../../store/gameplay/actions';
 
-import { BattlefieldState } from '../store/model'; 
+import { BattlefieldState } from '../store/model';
 import * as fromBattlefieldStore from '../store';
 import * as battlefieldActions from '../store/actions';
 
@@ -15,14 +15,14 @@ import { BattlefieldAutopassService } from './autopass.service';
 
 describe('BattlefieldAutopassService', () => {
   let store: Store<AppState>;
-  let service : BattlefieldAutopassService;
+  let service: BattlefieldAutopassService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    	imports: [
-    		StoreModule.forRoot(fromAppStore.appReducers),
-    		StoreModule.forFeature('battlefield', fromBattlefieldStore.battlefieldReducers)
-    	],
+      imports: [
+        StoreModule.forRoot(fromAppStore.appReducers),
+        StoreModule.forFeature('battlefield', fromBattlefieldStore.battlefieldReducers)
+      ],
       providers: [BattlefieldAutopassService]
     });
   });
@@ -38,14 +38,14 @@ describe('BattlefieldAutopassService', () => {
 
   describe('handler', () => {
     it('should autopass  if now players ste', () => {
-      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => {});
+      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => { });
       spyOn(fromAppStore, 'selectGameplayCheckStep').and.returnValue(true);
 
       service.handler("player", "opponent");
 
       expect(storeSpy.calls.count()).toBe(2);
 
-      expect(store.dispatch).toHaveBeenCalledWith(new battlefieldActions.SelectRandomFreeFieldCell({ 
+      expect(store.dispatch).toHaveBeenCalledWith(new battlefieldActions.SelectRandomFreeFieldCell({
         name: "opponent"
       }));
 
@@ -53,7 +53,7 @@ describe('BattlefieldAutopassService', () => {
     });
 
     it('should no autopass if now not players step', () => {
-      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => {});
+      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => { });
       spyOn(fromAppStore, 'selectGameplayCheckStep').and.returnValue(false);
 
       service.handler("player", "opponent");

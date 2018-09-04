@@ -9,7 +9,7 @@ import { AppState } from '../../store/model';
 import * as fromAppStore from '../../store';
 import * as gameplayActions from '../../store/gameplay/actions';
 
-import { BattlefieldState } from '../store/model'; 
+import { BattlefieldState } from '../store/model';
 import * as fromBattlefieldStore from '../store';
 import * as battlefieldActions from '../store/actions';
 
@@ -21,15 +21,14 @@ describe('BattlefieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-    	imports: [
-    		StoreModule.forRoot(fromAppStore.appReducers),
-    		StoreModule.forFeature('battlefield', fromBattlefieldStore.battlefieldReducers)
-    	],
-      declarations: [ 
+      imports: [
+        StoreModule.forRoot(fromAppStore.appReducers),
+        StoreModule.forFeature('battlefield', fromBattlefieldStore.battlefieldReducers)
+      ],
+      declarations: [
         BattlefieldCellComponent
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -47,64 +46,64 @@ describe('BattlefieldComponent', () => {
 
   describe('should correct cell classes after pass cell data', () => {
 
-  	it("init", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
-  		fixture.detectChanges();
+    it("init", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
+      fixture.detectChanges();
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell');
-  	});
-  	
-  	it("clickable", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
-  		component.clickable = true;
-  		fixture.detectChanges();
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell');
+    });
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--clickable');
-  	});
+    it("clickable", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
+      component.clickable = true;
+      fixture.detectChanges();
 
-  	it("disabled", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
-  		component.clickable = true;
-  		component.disabled = true;
-  		fixture.detectChanges();
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--clickable');
+    });
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell');
-  	})
+    it("disabled", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
+      component.clickable = true;
+      component.disabled = true;
+      fixture.detectChanges();
 
-  	it("ship", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: true, used: true, status: CellStatus.EMPTY };
-  		fixture.detectChanges();
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell');
+    })
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--ship');
-  	});
+    it("ship", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: true, used: true, status: CellStatus.EMPTY };
+      fixture.detectChanges();
 
-  	it("missed", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.MISSED };
-  		fixture.detectChanges();
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--ship');
+    });
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--missed');
-  	});
-  	
-  	it("damaged", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: true, used: true, status: CellStatus.DAMAGED };
-  		fixture.detectChanges();
+    it("missed", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.MISSED };
+      fixture.detectChanges();
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--damaged');
-  	});
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--missed');
+    });
 
-  	it("clickable with ship", () => {
-  		component.cell = { id: "00", x: 0, y: 0, ship: true, used: true, status: CellStatus.EMPTY };
-  		component.clickable = true;
-  		fixture.detectChanges();
+    it("damaged", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: true, used: true, status: CellStatus.DAMAGED };
+      fixture.detectChanges();
 
-  		expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--clickable battlefield-cell--ship');
-  	});
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--damaged');
+    });
+
+    it("clickable with ship", () => {
+      component.cell = { id: "00", x: 0, y: 0, ship: true, used: true, status: CellStatus.EMPTY };
+      component.clickable = true;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.getAttribute('class')).toBe('battlefield-cell battlefield-cell--clickable battlefield-cell--ship');
+    });
   });
 
   describe('should correctly execute the handler on a click on a cell', () => {
 
     it("should call dispatch actions if cell is empty and clickable", () => {
-      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => {});
+      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => { });
 
       component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
       component.player = "enemy";
@@ -115,9 +114,9 @@ describe('BattlefieldComponent', () => {
 
       expect(storeSpy.calls.count()).toBe(2);
 
-      expect(store.dispatch).toHaveBeenCalledWith(new battlefieldActions.SelectFieldCell({ 
+      expect(store.dispatch).toHaveBeenCalledWith(new battlefieldActions.SelectFieldCell({
         name: component.player,
-        coord: { 
+        coord: {
           x: component.cell.x,
           y: component.cell.y
         }
@@ -127,7 +126,7 @@ describe('BattlefieldComponent', () => {
     });
 
     it("should not call dispatch actions if cell is not clickable", () => {
-      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => {});
+      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => { });
 
       component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
       component.player = "enemy";
@@ -140,7 +139,7 @@ describe('BattlefieldComponent', () => {
     });
 
     it("should not call dispatch actions if cell is disabled", () => {
-      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => {});
+      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => { });
 
       component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.EMPTY };
       component.player = "enemy";
@@ -153,7 +152,7 @@ describe('BattlefieldComponent', () => {
     });
 
     it("should not call dispatch actions if cell is not empty", () => {
-      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => {});
+      let storeSpy = spyOn(store, 'dispatch').and.callFake(() => { });
 
       component.cell = { id: "00", x: 0, y: 0, ship: false, used: false, status: CellStatus.MISSED };
       component.player = "enemy";

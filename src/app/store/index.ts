@@ -1,4 +1,4 @@
-import { ActionReducerMap, createSelector, createFeatureSelector }  from '@ngrx/store';
+import { ActionReducerMap, createSelector, createFeatureSelector } from '@ngrx/store';
 
 import { AppState } from './model';
 
@@ -7,7 +7,7 @@ import { GameplayPlayer } from './gameplay/models/player';
 import { gameplayReducer } from './gameplay/reducer';
 import * as gameplaySelectors from './gameplay/selectors';
 
-export const appReducers:ActionReducerMap<AppState> = {
+export const appReducers: ActionReducerMap<AppState> = {
   gameplay: gameplayReducer
 }
 
@@ -15,12 +15,12 @@ export const selectGameplay = createFeatureSelector<AppState, GameplayStore>(
   'gameplay'
 );
 
-export const selectGameplayIsBegging  = createSelector(
+export const selectGameplayIsBegging = createSelector(
   selectGameplay,
   gameplaySelectors.selectGameplayIsBegging
 );
 
-export const selectGameplayIsActive  = createSelector(
+export const selectGameplayIsActive = createSelector(
   selectGameplay,
   gameplaySelectors.selectGameplayIsActive
 );
@@ -36,7 +36,7 @@ export const selectGameplayWasEnded = createSelector(
 );
 
 export const selectGameplayPlayers = createSelector(
-	selectGameplay,
+  selectGameplay,
   gameplaySelectors.selectGameplayPlayers
 )
 

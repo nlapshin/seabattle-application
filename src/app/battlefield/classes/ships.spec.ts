@@ -13,7 +13,7 @@ describe('DShip', () => {
         let dship = new DShip();
 
         dship.fillCoords(0, 0, 0);
-        expect(dship.coords).toEqual([{x: 0, y: 0}]);
+        expect(dship.coords).toEqual([{ x: 0, y: 0 }]);
       });
     });
   });
@@ -32,28 +32,28 @@ describe('IShip', () => {
         let iship = new IShip();
 
         iship.fillCoords(0, 0, 0);
-        expect(iship.getCoords()).toEqual([{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}]);
+        expect(iship.getCoords()).toEqual([{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }, { x: 3, y: 0 }]);
       });
-      
+
       it("x = 0, y = 0, rotate = 90", () => {
         let iship = new IShip();
 
         iship.fillCoords(0, 0, 90);
-        expect(iship.getCoords()).toEqual([{x: 0, y: 0}, {x: 0, y: 1}, {x: 0, y: 2}, {x: 0, y: 3}]);
+        expect(iship.getCoords()).toEqual([{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 0, y: 2 }, { x: 0, y: 3 }]);
       });
 
       it("x = 0, y = 0, rotate = 180", () => {
         let iship = new IShip();
 
         iship.fillCoords(0, 0, 180);
-        expect(iship.getCoords()).toEqual([{x: 0, y: 0}, {x: -1, y: 0}, {x: -2, y: 0}, {x: -3, y: 0}]);
+        expect(iship.getCoords()).toEqual([{ x: 0, y: 0 }, { x: -1, y: 0 }, { x: -2, y: 0 }, { x: -3, y: 0 }]);
       });
 
       it("x = 0, y = 0, rotate = 270", () => {
         let iship = new IShip();
 
         iship.fillCoords(0, 0, 270);
-        expect(iship.getCoords()).toEqual([{x: 0, y: 0}, {x: 0, y: -1}, {x: 0, y: -2}, {x: 0, y: -3}]);
+        expect(iship.getCoords()).toEqual([{ x: 0, y: 0 }, { x: 0, y: -1 }, { x: 0, y: -2 }, { x: 0, y: -3 }]);
       });
     });
   });
@@ -72,28 +72,28 @@ describe('LShip', () => {
         let lship = new LShip();
 
         lship.fillCoords(0, 0, 0);
-        expect(lship.coords).toEqual([{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 2, y: 1}]);
+        expect(lship.coords).toEqual([{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }, { x: 2, y: 1 }]);
       });
-      
+
       it("x = 0, y = 0, rotate = 90", () => {
         let lship = new LShip();
 
         lship.fillCoords(0, 0, 90);
-        expect(lship.coords).toEqual([{x: 0, y: 0}, {x: 0, y: 1}, {x: 0, y: 2}, {x: -1, y: 2}]);
+        expect(lship.coords).toEqual([{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 0, y: 2 }, { x: -1, y: 2 }]);
       });
 
       it("x = 0, y = 0, rotate = 180", () => {
         let lship = new LShip();
 
         lship.fillCoords(0, 0, 180);
-        expect(lship.coords).toEqual([{x: 0, y: 0}, {x: -1, y: 0}, {x: -2, y: 0}, {x: -2, y: -1}]);
+        expect(lship.coords).toEqual([{ x: 0, y: 0 }, { x: -1, y: 0 }, { x: -2, y: 0 }, { x: -2, y: -1 }]);
       });
 
       it("x = 0, y = 0, rotate = 270", () => {
         let lship = new LShip();
 
         lship.fillCoords(0, 0, 270);
-        expect(lship.coords).toEqual([{x: 0, y: 0}, {x: 0, y: -1}, {x: 0, y: -2}, {x: 1, y: -2}]);
+        expect(lship.coords).toEqual([{ x: 0, y: 0 }, { x: 0, y: -1 }, { x: 0, y: -2 }, { x: 1, y: -2 }]);
       });
     });
   });
@@ -109,5 +109,5 @@ describe('createShip', () => {
     expect(iship.type).toEqual("I");
     expect(lship.type).toEqual("L");
     // expect(function(){ createShip("TTTT") }).toThrow(new Error("incorrect ship types"));
-   });
+  });
 });

@@ -7,7 +7,7 @@ import { AppState } from '../../store/model';
 import * as fromAppStore from '../../store';
 import * as gameplayActions from '../../store/gameplay/actions';
 
-import { BattlefieldState } from '../store/model'; 
+import { BattlefieldState } from '../store/model';
 import * as fromBattlefieldStore from '../store';
 import * as battlefieldActions from '../store/actions';
 
@@ -29,53 +29,53 @@ export class BattlefieldCellComponent implements OnInit {
   @Input() player: string
   @Input() disabled: boolean
   @Input() hidden: boolean
-	@Input() clickable: boolean
+  @Input() clickable: boolean
 
-  @HostBinding(`class.${CLASS_ELEM}`) public elemClass = true 
+  @HostBinding(`class.${CLASS_ELEM}`) public elemClass = true
 
-  @HostBinding(`class.${CLASS_CLICKABLE}`) 
-	public get isClickable(): boolean {
-		return !this.disabled && this.clickable && this.cell.status === CellStatus.EMPTY;
-	}
+  @HostBinding(`class.${CLASS_CLICKABLE}`)
+  public get isClickable(): boolean {
+    return !this.disabled && this.clickable && this.cell.status === CellStatus.EMPTY;
+  }
 
-	@HostBinding(`class.${CLASS_HIDDEN}`) 
-	public get isHidden(): boolean {
-		return this.hidden && this.cell.status === "";
-	}
+  @HostBinding(`class.${CLASS_HIDDEN}`)
+  public get isHidden(): boolean {
+    return this.hidden && this.cell.status === "";
+  }
 
-	@HostBinding(`class.${CLASS_SHIP}`) 
-	public get isShip(): boolean {
-		return !this.hidden && this.cell.ship === true && this.cell.status === CellStatus.EMPTY;
-	}
+  @HostBinding(`class.${CLASS_SHIP}`)
+  public get isShip(): boolean {
+    return !this.hidden && this.cell.ship === true && this.cell.status === CellStatus.EMPTY;
+  }
 
-	@HostBinding(`class.${CLASS_MISSED}`) 
-	public get isMissed(): boolean {
-		return this.cell.status === CellStatus.MISSED;
-	}
+  @HostBinding(`class.${CLASS_MISSED}`)
+  public get isMissed(): boolean {
+    return this.cell.status === CellStatus.MISSED;
+  }
 
-	@HostBinding(`class.${CLASS_DAMAGED}`) 
-	public get isDamaged(): boolean {
-		return this.cell.status === CellStatus.DAMAGED;
-	}
+  @HostBinding(`class.${CLASS_DAMAGED}`)
+  public get isDamaged(): boolean {
+    return this.cell.status === CellStatus.DAMAGED;
+  }
 
-	@HostListener('click') onClickCell() {
-		if (!this.clickable || this.disabled) return;
-		if (this.cell.status !== CellStatus.EMPTY) return;
+  @HostListener('click') onClickCell() {
+    if (!this.clickable || this.disabled) return;
+    if (this.cell.status !== CellStatus.EMPTY) return;
 
-		this.battlefieldStore.dispatch(new battlefieldActions.SelectFieldCell({ 
+    this.battlefieldStore.dispatch(new battlefieldActions.SelectFieldCell({
       name: this.player,
       coord: {
-      	x: this.cell.x,
-      	y: this.cell.y
+        x: this.cell.x,
+        y: this.cell.y
       }
     }));
 
     this.appStore.dispatch(new gameplayActions.ChangeStep());
-	}
+  }
 
   constructor(private appStore: Store<AppState>, private battlefieldStore: Store<BattlefieldState>) {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

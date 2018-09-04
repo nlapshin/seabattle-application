@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   public player: string = "player"
   public opponent: string = "enemy"
 
-	public isBegging$: Observable<boolean>
+  public isBegging$: Observable<boolean>
   public isActive$: Observable<boolean>
 
   public wasStarted$: Observable<boolean>
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
   public resultMessage$: Observable<string>
 
-	constructor(private appStore: Store<AppState>) {}
+  constructor(private appStore: Store<AppState>) { }
 
   ngOnInit() {
     this.isBegging$ = this.appStore.pipe(select(fromStore.selectGameplayIsBegging));
@@ -40,18 +40,18 @@ export class AppComponent implements OnInit {
     );
   }
 
-  startGame() : void {
-    this.appStore.dispatch(new gameplayActions.AddPlayers({ 
-      players: [ 
-        { name: this.player, role: "player" }, 
+  startGame(): void {
+    this.appStore.dispatch(new gameplayActions.AddPlayers({
+      players: [
+        { name: this.player, role: "player" },
         { name: this.opponent, role: "computer" }
       ]
     }));
 
-  	this.appStore.dispatch(new gameplayActions.StartGame());
+    this.appStore.dispatch(new gameplayActions.StartGame());
   }
 
-  restartGame() : void {
+  restartGame(): void {
     this.appStore.dispatch(new gameplayActions.ResetGame());
     this.appStore.dispatch(new gameplayActions.StartGame());
   }
@@ -64,6 +64,6 @@ export class AppComponent implements OnInit {
     let result = "Игра окончена. ";
     result += (winner === this.player) ? "Вы выиграли." : "Вы проиграли.";
 
-    return result; 
+    return result;
   }
 }

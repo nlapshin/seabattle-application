@@ -3,7 +3,7 @@ import { Field } from './field';
 import { ICell } from '../models/cell';
 
 describe('Field', () => {
-	it("should create field instance", () => {
+  it("should create field instance", () => {
     let field = new Field();
 
     expect(field).toBeTruthy();
@@ -26,21 +26,21 @@ describe('Field', () => {
     it("should return field cell", () => {
       let field = new Field(5);
 
-      let cell = field.getFieldCell({x: 0, y: 0});
+      let cell = field.getFieldCell({ x: 0, y: 0 });
 
-      expect(cell).toEqual(<ICell>{x: 0, y: 0, id: '00', used: false, ship: false, status: ''});
+      expect(cell).toEqual(<ICell>{ x: 0, y: 0, id: '00', used: false, ship: false, status: '' });
     });
   })
 
   describe("setFieldCell", () => {
     it("should set payload to field cell", () => {
       let field = new Field(5);
-      let coord = {x: 0, y: 0};
+      let coord = { x: 0, y: 0 };
 
       field.setFieldCell(coord, { used: true });
       let cell = field.getFieldCell(coord);
 
-      expect(cell).toEqual(<ICell>{x: 0, y: 0, id: '00', used: true, ship: false, status: ''});
+      expect(cell).toEqual(<ICell>{ x: 0, y: 0, id: '00', used: true, ship: false, status: '' });
     });
   });
 
@@ -51,16 +51,16 @@ describe('Field', () => {
 
       field.addShipToField(shipCoords);
 
-      expect(field.getFieldCell({ x: 0, y: 0 })).toEqual(<ICell>{x: 0, y: 0, id: '00', used: true, ship: true, status: ''});
-      expect(field.getFieldCell({ x: 0, y: 1 })).toEqual(<ICell>{x: 0, y: 1, id: '01', used: true, ship: true, status: ''});
-      expect(field.getFieldCell({ x: 1, y: 1 })).toEqual(<ICell>{x: 1, y: 1, id: '11', used: true, ship: true, status: ''});
+      expect(field.getFieldCell({ x: 0, y: 0 })).toEqual(<ICell>{ x: 0, y: 0, id: '00', used: true, ship: true, status: '' });
+      expect(field.getFieldCell({ x: 0, y: 1 })).toEqual(<ICell>{ x: 0, y: 1, id: '01', used: true, ship: true, status: '' });
+      expect(field.getFieldCell({ x: 1, y: 1 })).toEqual(<ICell>{ x: 1, y: 1, id: '11', used: true, ship: true, status: '' });
 
-      expect(field.getFieldCell({ x: 0, y: 2 })).toEqual(<ICell>{x: 0, y: 2, id: '02', used: true, ship: false, status: ''});
-      expect(field.getFieldCell({ x: 1, y: 2 })).toEqual(<ICell>{x: 1, y: 2, id: '12', used: true, ship: false, status: ''});
-      expect(field.getFieldCell({ x: 2, y: 2 })).toEqual(<ICell>{x: 2, y: 2, id: '22', used: true, ship: false, status: ''});
-      expect(field.getFieldCell({ x: 2, y: 1 })).toEqual(<ICell>{x: 2, y: 1, id: '21', used: true, ship: false, status: ''});
-      expect(field.getFieldCell({ x: 2, y: 0 })).toEqual(<ICell>{x: 2, y: 0, id: '20', used: true, ship: false, status: ''});
-      expect(field.getFieldCell({ x: 1, y: 0 })).toEqual(<ICell>{x: 1, y: 0, id: '10', used: true, ship: false, status: ''});
+      expect(field.getFieldCell({ x: 0, y: 2 })).toEqual(<ICell>{ x: 0, y: 2, id: '02', used: true, ship: false, status: '' });
+      expect(field.getFieldCell({ x: 1, y: 2 })).toEqual(<ICell>{ x: 1, y: 2, id: '12', used: true, ship: false, status: '' });
+      expect(field.getFieldCell({ x: 2, y: 2 })).toEqual(<ICell>{ x: 2, y: 2, id: '22', used: true, ship: false, status: '' });
+      expect(field.getFieldCell({ x: 2, y: 1 })).toEqual(<ICell>{ x: 2, y: 1, id: '21', used: true, ship: false, status: '' });
+      expect(field.getFieldCell({ x: 2, y: 0 })).toEqual(<ICell>{ x: 2, y: 0, id: '20', used: true, ship: false, status: '' });
+      expect(field.getFieldCell({ x: 1, y: 0 })).toEqual(<ICell>{ x: 1, y: 0, id: '10', used: true, ship: false, status: '' });
     });
   });
 
@@ -74,7 +74,7 @@ describe('Field', () => {
       expect(range.y).toEqual([0, 4]);
     })
   });
-  
+
   describe("getRandomFieldCoords", () => {
     it("should return coords within the field with random values", () => {
       let field = new Field(5);

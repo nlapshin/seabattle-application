@@ -1,7 +1,7 @@
 import { GameplayStore } from './models/store';
 
 interface gameplayCheckStep {
-	player: string
+  player: string
 }
 
 export const selectGameplayIsBegging = (store: GameplayStore) => store.state === '';

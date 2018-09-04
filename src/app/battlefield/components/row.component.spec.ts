@@ -10,7 +10,7 @@ import { AppState } from '../../store/model';
 import * as fromAppStore from '../../store';
 import * as gameplayActions from '../../store/gameplay/actions';
 
-import { BattlefieldState } from '../store/model'; 
+import { BattlefieldState } from '../store/model';
 import * as fromBattlefieldStore from '../store';
 import * as battlefieldActions from '../store/actions';
 
@@ -20,16 +20,15 @@ describe('BattlefieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-    	imports: [
-    		StoreModule.forRoot(fromAppStore.appReducers),
-    		StoreModule.forFeature('battlefield', fromBattlefieldStore.battlefieldReducers)
-    	],
-      declarations: [ 
+      imports: [
+        StoreModule.forRoot(fromAppStore.appReducers),
+        StoreModule.forFeature('battlefield', fromBattlefieldStore.battlefieldReducers)
+      ],
+      declarations: [
         BattlefieldRowComponent,
         BattlefieldCellComponent
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

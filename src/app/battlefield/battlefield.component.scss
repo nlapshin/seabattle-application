@@ -10,28 +10,22 @@ app-battlefield {
 	&-field {
 		height: $field-size;
 		width: $field-size;
-
 		margin: 20px;
-
 		border: $field-border-width solid $field-border-color;
 	}
 }
- 
-.battlefield {	
- 	&-row {
-	 	height: $field-cell-height;
+
+.battlefield {
+	&-row {
+		height: $field-cell-height;
 	}
 
 	&-cell {
-	 	display: inline-block;
-
+		display: inline-block;
 		height: $field-cell-height;
 		width: $field-cell-width;
-
 		box-sizing: border-box;
-
 		border: $field-cell-border-width solid $field-cell-color;
-
 		margin: 0;
 
 		&--clickable {
@@ -51,6 +45,3 @@ app-battlefield {
 		}
 	}
 }
-
-
-
