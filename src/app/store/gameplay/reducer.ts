@@ -15,7 +15,7 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
     case fromActions.START_GAME: {
       const data = { 
         state: "started", 
-        step: state.players.length ? state.players.slice(0)[0].name : "",
+        step: state.players.length ? [ ...state.players ][0].name : "",
         winner: ""
       };
 
@@ -52,9 +52,7 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
       const players = action.payload.players;
       const newState = { ...state };
 
-      players.forEach(player => {
-        newState.players = addPlayer(player, newState.players);
-      });
+      newState.players = addPlayers(players, newState.players);
 
       return newState; 
     }
@@ -70,6 +68,12 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
   }
 
   return state;
+}
+
+function addPlayers(newPlayers, oldPlayers) {
+  return newPlayers.reduce((players, player) => {
+    return addPlayer(player, players);
+  }, oldPlayers);
 }
 
 function addPlayer(player, players) {
