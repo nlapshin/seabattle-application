@@ -9,13 +9,13 @@ import { ICell } from '../models/cell';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BattlefieldRowComponent implements OnInit {
-  @Input() row: ICell[]
-  @Input() player: string
-  @Input() disabled: boolean
-  @Input() hidden: boolean
-  @Input() clickable: boolean
+  @Input() row: ICell[];
+  @Input() player: string;
+  @Input() disabled: boolean;
+  @Input() hidden: boolean;
+  @Input() clickable: boolean;
 
-  @HostBinding(`class.battlefield-row`) public elemClass = true
+  @HostBinding(`class.battlefield-row`) public elemClass = true;
 
   constructor() { }
 

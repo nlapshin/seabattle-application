@@ -2,15 +2,15 @@ import { Action } from '@ngrx/store';
 import { GameplayPlayer } from './models/player';
 
 interface EndGamePayload {
-  winner: string
+  winner: string;
 }
 
 interface AddPlayerPayload {
-  player: GameplayPlayer
+  player: GameplayPlayer;
 }
 
 interface AddPlayersPayload {
-  players: GameplayPlayer[]
+  players: GameplayPlayer[];
 }
 
 export const START_GAME = 'Start game';

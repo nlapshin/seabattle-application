@@ -13,19 +13,19 @@ describe('workspace-project App', () => {
 
     await browser.waitForAngular();
 
-    let appContainer = page.getContainer();
+    const appContainer = page.getContainer();
 
     expect(appContainer.isPresent()).toBe(true);
 
-    let startedButton = page.getStartButton();
-    let restartedButton = page.getRestartButton();
-    let startedoverButton = page.getStartedOverButton();
+    const startedButton = page.getStartButton();
+    const restartedButton = page.getRestartButton();
+    const startedoverButton = page.getStartedOverButton();
 
     expect(startedButton.isPresent()).toBe(true);
     expect(restartedButton.isPresent()).toBe(false);
     expect(startedoverButton.isPresent()).toBe(false);
 
-    let gameContainer = page.getGameContainer();
+    const gameContainer = page.getGameContainer();
 
     expect(gameContainer.isPresent()).toBe(true);
     expect(gameContainer.isDisplayed()).toBe(false);
@@ -36,9 +36,9 @@ describe('workspace-project App', () => {
 
     await browser.waitForAngular();
 
-    let startedButton = page.getStartButton();
-    let restartedButton = page.getRestartButton();
-    let startedoverButton = page.getStartedOverButton();
+    const startedButton = page.getStartButton();
+    const restartedButton = page.getRestartButton();
+    const startedoverButton = page.getStartedOverButton();
 
     startedButton.click();
 
@@ -48,7 +48,7 @@ describe('workspace-project App', () => {
     expect(restartedButton.isPresent()).toBe(true);
     expect(startedoverButton.isPresent()).toBe(false);
 
-    let gameContainer = page.getGameContainer();
+    const gameContainer = page.getGameContainer();
 
     expect(gameContainer.isPresent()).toBe(true);
     expect(gameContainer.isDisplayed()).toBe(true);
@@ -59,13 +59,13 @@ describe('workspace-project App', () => {
 
     await browser.waitForAngular();
 
-    let startedButton = page.getStartButton();
+    const startedButton = page.getStartButton();
     startedButton.click();
 
     await browser.waitForAngular();
 
-    let fieldContainer = page.getBattlefieldContainer();
-    let fields = page.getBattlefields();
+    const fieldContainer = page.getBattlefieldContainer();
+    const fields = page.getBattlefields();
 
     expect(fieldContainer.count()).toBe(1);
     expect(fields.count()).toBe(2);
@@ -76,7 +76,7 @@ describe('workspace-project App', () => {
 
     await browser.waitForAngular();
 
-    let startedButton = page.getStartButton();
+    const startedButton = page.getStartButton();
     startedButton.click();
 
     await browser.waitForAngular();
@@ -96,13 +96,13 @@ describe('workspace-project App', () => {
 
     await page.battlefieldGameEmulate();
 
-    let result = await page.getGameResult();
-    let playerDamaged = await page.getPlayerDamagedCells().count();
-    let enemyDamaged = await page.getEnemyDamagedCells().count();
+    const result = await page.getGameResult();
+    const playerDamaged = await page.getPlayerDamagedCells().count();
+    const enemyDamaged = await page.getEnemyDamagedCells().count();
 
-    let startedButton = page.getStartButton();
-    let restartedButton = page.getRestartButton();
-    let startedoverButton = page.getStartedOverButton();
+    const startedButton = page.getStartButton();
+    const restartedButton = page.getRestartButton();
+    const startedoverButton = page.getStartedOverButton();
 
     expect(result).not.toBe('');
 
@@ -110,7 +110,7 @@ describe('workspace-project App', () => {
       expect(result).toBe('Игра окончена. Вы выиграли.');
     } else {
       expect(result).toBe('Игра окончена. Вы проиграли.');
-    };
+    }
 
     expect(startedButton.isPresent()).toBe(false);
     expect(restartedButton.isPresent()).toBe(false);
@@ -130,7 +130,7 @@ describe('workspace-project App', () => {
     expect(playerFreeCellsCount).not.toBe(100);
     expect(enemyFreeCellsCount).not.toBe(100);
 
-    let startedoverButton = page.getStartedOverButton();
+    const startedoverButton = page.getStartedOverButton();
     startedoverButton.click();
 
     await browser.waitForAngular();

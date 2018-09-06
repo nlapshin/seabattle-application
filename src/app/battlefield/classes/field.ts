@@ -1,11 +1,11 @@
-import { flatten, range, random, shuffle } from 'lodash';
+import { range, random } from 'lodash';
 
 import { IField } from '../models/field';
 import { ICell } from '../models/cell';
 import { ICoord } from '../models/coord';
 
 export class Field {
-  private field: IField
+  private field: IField;
 
   constructor(public size: number = 10) {
     this.field = this.makeField(size);
@@ -27,7 +27,7 @@ export class Field {
     coords.forEach(coord => {
       this.setFieldCell(coord, { ship: true });
 
-      let nbCoords = this.getNeighboursCoords(coord);
+      const nbCoords = this.getNeighboursCoords(coord);
       nbCoords.forEach(nbCoord => this.setFieldCell(nbCoord, { used: true }));
     });
   }
@@ -36,11 +36,11 @@ export class Field {
     return {
       x: [0, this.field.length - 1],
       y: [0, this.field[0].length - 1]
-    }
+    };
   }
 
   public getRandomFieldCoord(): ICoord {
-    let fieldRange = this.getRange();
+    const fieldRange = this.getRange();
 
     return {
       x: random.apply(random, fieldRange.x),
@@ -49,7 +49,7 @@ export class Field {
   }
 
   public coordBelongToField(coord: ICoord) {
-    let { x: xrange, y: yrange } = this.getRange();
+    const { x: xrange, y: yrange } = this.getRange();
 
     return coord.x >= xrange[0] && coord.x <= xrange[1] &&
       coord.y >= yrange[0] && coord.y <= yrange[1];
@@ -64,7 +64,7 @@ export class Field {
   }
 
   private makeField(size: number = 10) {
-    let sizeArr = range(size);
+    const sizeArr = range(size);
 
     return sizeArr.map(x => sizeArr.map(y => this.defCell(x, y)));
   }
@@ -76,15 +76,15 @@ export class Field {
       id: x.toString() + y.toString(),
       used: false,
       ship: false,
-      status: ""
+      status: ''
     };
   }
 
   private getNeighboursCoords(coord: ICoord): ICoord[] {
-    let coords = [];
+    const coords = [];
 
-    let xrange = [coord.x - 1, coord.x, coord.x + 1];
-    let yrange = [coord.y - 1, coord.y, coord.y + 1];
+    const xrange = [coord.x - 1, coord.x, coord.x + 1];
+    const yrange = [coord.y - 1, coord.y, coord.y + 1];
 
     xrange.forEach(x => {
       yrange.forEach(y => {
@@ -92,7 +92,7 @@ export class Field {
           coords.push({ x, y });
         }
       });
-    })
+    });
 
     return coords;
   }

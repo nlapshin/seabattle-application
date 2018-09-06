@@ -2,19 +2,19 @@ import { Action } from '@ngrx/store';
 
 import { ICoord } from '../models/coord';
 
-interface createFieldWithRandomShipsPayload {
-  name: string,
-  size: number,
-  ships: string[]
+interface CreateFieldWithRandomShipsPayload {
+  name: string;
+  size: number;
+  ships: string[];
 }
 
-interface selectFieldCellPayload {
-  name: string,
-  coord: ICoord
+interface SelectFieldCellPayload {
+  name: string;
+  coord: ICoord;
 }
 
-interface selectRandomFreeFieldCellPayload {
-  name: string
+interface SelectRandomFreeFieldCellPayload {
+  name: string;
 }
 
 export const CREATE_FIELD_WITH_RANDOM_SHIPS = 'Create field with random ships';
@@ -23,17 +23,17 @@ export const SELECT_RANDOM_FREE_FIELD_CELL = 'Select random free field cell';
 
 export class CreateFieldWithRandomShips implements Action {
   readonly type = CREATE_FIELD_WITH_RANDOM_SHIPS;
-  constructor(public payload: createFieldWithRandomShipsPayload) { }
+  constructor(public payload: CreateFieldWithRandomShipsPayload) { }
 }
 
 export class SelectFieldCell implements Action {
   readonly type = SELECT_FIELD_CELL;
-  constructor(public payload: selectFieldCellPayload) { }
+  constructor(public payload: SelectFieldCellPayload) { }
 }
 
 export class SelectRandomFreeFieldCell implements Action {
   readonly type = SELECT_RANDOM_FREE_FIELD_CELL;
-  constructor(public payload: selectRandomFreeFieldCellPayload) { }
+  constructor(public payload: SelectRandomFreeFieldCellPayload) { }
 }
 
 export type FieldActions = CreateFieldWithRandomShips | SelectFieldCell | SelectRandomFreeFieldCell;

@@ -3,125 +3,125 @@ import { GameplayStore } from './models/store';
 
 describe('The gameplay selectors', () => {
 
-  describe("selectGameplayIsBegging", () => {
-    it("should return true if gameplay state equal ''", () => {
+  describe('selectGameplayIsBegging', () => {
+    it('should return true if gameplay state equal \'\'', () => {
       const store: GameplayStore = {
-        state: "",
-        step: "",
+        state: '',
+        step: '',
         players: [],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayIsBegging(store)).toBe(true);
     });
 
-    it("should return false if gameplay state not equal ''", () => {
+    it('should return false if gameplay state not equal \'\'', () => {
       const store: GameplayStore = {
-        state: "started",
-        step: "",
+        state: 'started',
+        step: '',
         players: [],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayIsBegging(store)).toBe(false);
     });
   });
 
-  describe("selectGameplayIsActive", () => {
-    it("should return true if gameplay state not equal ''", () => {
+  describe('selectGameplayIsActive', () => {
+    it('should return true if gameplay state not equal \'\'', () => {
       const store: GameplayStore = {
-        state: "ended",
-        step: "",
+        state: 'ended',
+        step: '',
         players: [],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayIsActive(store)).toBe(true);
     });
 
-    it("should return false if gameplay state equal ''", () => {
+    it('should return false if gameplay state equal \'\'', () => {
       const store: GameplayStore = {
-        state: "",
-        step: "",
+        state: '',
+        step: '',
         players: [],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayIsActive(store)).toBe(false);
     });
   });
 
-  describe("selectGameplayWasEnded", () => {
-    it("should return true if gameplay state equal 'ended'", () => {
+  describe('selectGameplayWasEnded', () => {
+    it('should return true if gameplay state equal \'ended\'', () => {
       const store: GameplayStore = {
-        state: "ended",
-        step: "",
+        state: 'ended',
+        step: '',
         players: [],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayWasEnded(store)).toBe(true);
     });
 
-    it("should return false if gameplay state not equal 'ended'", () => {
+    it('should return false if gameplay state not equal \'ended\'', () => {
       const store: GameplayStore = {
-        state: "",
-        step: "",
+        state: '',
+        step: '',
         players: [],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayWasEnded(store)).toBe(false);
     });
   });
 
-  describe("selectGameplayPlayers", () => {
-    it("should return list of players", () => {
+  describe('selectGameplayPlayers', () => {
+    it('should return list of players', () => {
       const store: GameplayStore = {
-        state: "",
-        step: "",
+        state: '',
+        step: '',
         players: [
-          { name: "player1", role: "player" },
-          { name: "player2", role: "player" }
+          { name: 'player1', role: 'player' },
+          { name: 'player2', role: 'player' }
         ],
-        winner: ""
+        winner: ''
       };
 
       expect(fromSelectors.selectGameplayPlayers(store)).toEqual(store.players);
     });
   });
 
-  describe("selectGameplayCheckStep", () => {
-    it("should return true if gameplay step equal name of the player to be checked, otherwise false", () => {
+  describe('selectGameplayCheckStep', () => {
+    it('should return true if gameplay step equal name of the player to be checked, otherwise false', () => {
       const store: GameplayStore = {
-        state: "",
-        step: "player1",
+        state: '',
+        step: 'player1',
         players: [
-          { name: "player1", role: "player" },
-          { name: "player2", role: "player" }
+          { name: 'player1', role: 'player' },
+          { name: 'player2', role: 'player' }
         ],
-        winner: ""
+        winner: ''
       };
 
-      expect(fromSelectors.selectGameplayCheckStep(store, { player: "player1" })).toBe(true);
-      expect(fromSelectors.selectGameplayCheckStep(store, { player: "player2" })).toBe(false);
-      expect(fromSelectors.selectGameplayCheckStep(store, { player: "player3" })).toBe(false);
+      expect(fromSelectors.selectGameplayCheckStep(store, { player: 'player1' })).toBe(true);
+      expect(fromSelectors.selectGameplayCheckStep(store, { player: 'player2' })).toBe(false);
+      expect(fromSelectors.selectGameplayCheckStep(store, { player: 'player3' })).toBe(false);
     });
   });
 
-  describe("selectGameplayWinner", () => {
-    it("should return winner name", () => {
+  describe('selectGameplayWinner', () => {
+    it('should return winner name', () => {
       const store: GameplayStore = {
-        state: "",
-        step: "player1",
+        state: '',
+        step: 'player1',
         players: [
-          { name: "player1", role: "player" },
-          { name: "player2", role: "player" }
+          { name: 'player1', role: 'player' },
+          { name: 'player2', role: 'player' }
         ],
-        winner: "player1"
+        winner: 'player1'
       };
 
-      expect(fromSelectors.selectGameplayWinner(store)).toBe("player1");
+      expect(fromSelectors.selectGameplayWinner(store)).toBe('player1');
     });
   });
 

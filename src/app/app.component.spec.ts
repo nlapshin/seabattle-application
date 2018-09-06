@@ -52,9 +52,9 @@ describe('AppComponent', () => {
       const gameContainerActive = element.querySelectorAll('.app__game-container--active');
 
       expect(navButtons.length).toBe(1);
-      expect(navButtons[0].innerText).toBe("Начать игру");
+      expect(navButtons[0].innerText).toBe('Начать игру');
       expect(gameContainerActive.length).toBe(0);
-    })
+    });
   }));
 
   it('should show game field after start game and add button restart game', async(() => {
@@ -70,9 +70,9 @@ describe('AppComponent', () => {
       const gameContainerActive = element.querySelectorAll('.app__game-container--active');
 
       expect(navButtons.length).toBe(1);
-      expect(navButtons[0].innerText).toBe("Перезапустить игру");
+      expect(navButtons[0].innerText).toBe('Перезапустить игру');
       expect(gameContainerActive.length).toBe(1);
-    })
+    });
   }));
 
   it('should show game field after restart game and add button restart game', async(() => {
@@ -90,9 +90,9 @@ describe('AppComponent', () => {
       const gameContainerActive = element.querySelectorAll('.app__game-container--active');
 
       expect(navButtons.length).toBe(1);
-      expect(navButtons[0].innerText).toBe("Перезапустить игру");
+      expect(navButtons[0].innerText).toBe('Перезапустить игру');
       expect(gameContainerActive.length).toBe(1);
-    })
+    });
   }));
 
   it('should show button start game again and show winner after game is over', async(() => {
@@ -110,9 +110,9 @@ describe('AppComponent', () => {
       let gameContainerActive = element.querySelectorAll('.app__game-container--active');
 
       expect(navButtons.length).toBe(1);
-      expect(navButtons[0].innerText).toBe("Начать игру заново");
+      expect(navButtons[0].innerText).toBe('Начать игру заново');
       expect(gameContainerActive.length).toBe(1);
-      expect(resultContainer.innerText).toBe("Игра окончена. Вы выиграли.");
+      expect(resultContainer.innerText).toBe('Игра окончена. Вы выиграли.');
 
       const actionPlayerLose = new gameplayActions.EndGame({ winner: component.opponent });
 
@@ -125,9 +125,9 @@ describe('AppComponent', () => {
       gameContainerActive = element.querySelectorAll('.app__game-container--active');
 
       expect(navButtons.length).toBe(1);
-      expect(navButtons[0].innerText).toBe("Начать игру заново");
+      expect(navButtons[0].innerText).toBe('Начать игру заново');
       expect(gameContainerActive.length).toBe(1);
-      expect(resultContainer.innerText).toBe("Игра окончена. Вы проиграли.");
-    })
+      expect(resultContainer.innerText).toBe('Игра окончена. Вы проиграли.');
+    });
   }));
 });

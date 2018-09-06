@@ -23,7 +23,7 @@ export function battlefieldReducer(state: FieldState = initialState, action) {
         [name]: helper.selectCell(state[name], coord)
       };
 
-      return { ...state, ...updateField }
+      return { ...state, ...updateField };
     }
 
     case fromActions.SELECT_RANDOM_FREE_FIELD_CELL: {
@@ -33,7 +33,7 @@ export function battlefieldReducer(state: FieldState = initialState, action) {
         [name]: helper.selectRandomFreeCell(state[name])
       };
 
-      return { ...state, ...updateField }
+      return { ...state, ...updateField };
     }
   }
 

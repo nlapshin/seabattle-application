@@ -14,16 +14,16 @@ import * as gameplayActions from './store/gameplay/actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public player: string = "player"
-  public opponent: string = "enemy"
+  public player = 'player';
+  public opponent = 'enemy';
 
-  public isBegging$: Observable<boolean>
-  public isActive$: Observable<boolean>
+  public isBegging$: Observable<boolean>;
+  public isActive$: Observable<boolean>;
 
-  public wasStarted$: Observable<boolean>
-  public wasEnded$: Observable<boolean>
+  public wasStarted$: Observable<boolean>;
+  public wasEnded$: Observable<boolean>;
 
-  public resultMessage$: Observable<string>
+  public resultMessage$: Observable<string>;
 
   constructor(private appStore: Store<AppState>) { }
 
@@ -43,8 +43,8 @@ export class AppComponent implements OnInit {
   startGame(): void {
     this.appStore.dispatch(new gameplayActions.AddPlayers({
       players: [
-        { name: this.player, role: "player" },
-        { name: this.opponent, role: "computer" }
+        { name: this.player, role: 'player' },
+        { name: this.opponent, role: 'computer' }
       ]
     }));
 
@@ -57,12 +57,12 @@ export class AppComponent implements OnInit {
   }
 
   prepareResultMessage(winner: string): string {
-    if (winner === "") {
+    if (winner === '') {
       return winner;
-    };
+    }
 
-    let result = "Игра окончена. ";
-    result += (winner === this.player) ? "Вы выиграли." : "Вы проиграли.";
+    let result = 'Игра окончена. ';
+    result += (winner === this.player) ? 'Вы выиграли.' : 'Вы проиграли.';
 
     return result;
   }

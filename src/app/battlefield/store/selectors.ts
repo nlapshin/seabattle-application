@@ -1,4 +1,4 @@
-import { transform, groupBy, flatten, random } from 'lodash';
+import { groupBy, flatten } from 'lodash';
 
 import { FieldState } from './model';
 
@@ -8,16 +8,17 @@ import { CellStatus } from '../models/cell';
 export const selectFieldList = (store: FieldState, player: string) => store[player];
 
 export const selectFieldWinner = (store: FieldState) => {
-	let players = Object.keys(store);
-	if (players.length < 2) return "";
+  const players = Object.keys(store);
+  if (players.length < 2) { return ''; }
 
-	let playersState = groupBy(players, player => checkFieldState(store[player]));
+  const playersState = groupBy(players, player => checkFieldState(store[player]));
 
-	return playersState.ingame.length == 1 ? playersState.ingame[0] : "";
-}
+  return playersState.ingame.length === 1 ? playersState.ingame[0] : '';
+};
 
 function checkFieldState(field: IField) {
-	let ships = flatten(field).filter(cell => cell.ship === true);
+  const ships = flatten(field).filter(cell => cell.ship === true);
+  const isDamagedShips = ships.some(ship => ship.status !== CellStatus.DAMAGED);
 
-	return ships.some(ship => ship.status !== CellStatus.DAMAGED) ? "ingame" : "lose";
-};
+  return isDamagedShips ? 'ingame' : 'lose';
+}

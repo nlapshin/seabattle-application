@@ -4,9 +4,9 @@ import * as fromActions from './actions';
 import { GameplayStore } from './models/store';
 
 export const initialState: GameplayStore = {
-  state: "",
-  step: "",
-  winner: "",
+  state: '',
+  step: '',
+  winner: '',
   players: []
 };
 
@@ -14,26 +14,26 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
   switch (action.type) {
     case fromActions.START_GAME: {
       const data = {
-        state: "started",
-        step: state.players.length ? [...state.players][0].name : "",
-        winner: ""
+        state: 'started',
+        step: state.players.length ? [...state.players][0].name : '',
+        winner: ''
       };
 
       return { ...state, ...data };
     }
 
     case fromActions.END_GAME: {
-      let winner = action.payload.winner;
+      const winner = action.payload.winner;
 
-      const data = { state: "ended", step: "", winner };
+      const data = { state: 'ended', step: '', winner };
       return { ...state, ...data };
     }
 
     case fromActions.RESET_GAME: {
       const data = {
-        state: "",
-        step: "",
-        winner: ""
+        state: '',
+        step: '',
+        winner: ''
       };
 
       return { ...state, ...data };
@@ -58,8 +58,8 @@ export function gameplayReducer(state: GameplayStore = initialState, action) {
     }
 
     case fromActions.CHANGE_STEP: {
-      const curStepIndex = findIndex(state.players, player => player.name == state.step);
-      const nextStepIndex = curStepIndex == (state.players.length - 1) ? 0 : (curStepIndex + 1);
+      const curStepIndex = findIndex(state.players, player => player.name === state.step);
+      const nextStepIndex = curStepIndex === (state.players.length - 1) ? 0 : (curStepIndex + 1);
 
       const data = { step: state.players[nextStepIndex].name };
 

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { StoreModule, Store, combineReducers } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 
 import { appReducers } from '../store';
 import { battlefieldReducers } from './store';
@@ -10,12 +10,7 @@ import { BattlefieldRowComponent } from './components/row.component';
 import { BattlefieldCellComponent } from './components/cell.component';
 
 import { AppState } from '../store/model';
-import * as fromAppStore from '../store';
 import * as gameplayActions from '../store/gameplay/actions';
-
-import { BattlefieldState } from './store/model';
-import * as fromBattlefieldStore from './store';
-import * as battlefieldActions from './store/actions';
 
 import { BattlefieldGuardService } from './services/guard.service';
 
@@ -59,27 +54,27 @@ describe('BattlefieldComponent', () => {
 
   it('should display a player fields after the players is dispatched', () => {
     const players = [
-      { name: "player", role: "player" },
-      { name: "enemy", role: "computer" }
+      { name: 'player', role: 'player' },
+      { name: 'enemy', role: 'computer' }
     ];
     const action = new gameplayActions.AddPlayers({ players });
 
     appStore.dispatch(action);
 
-    let expected = [
+    const expected = [
       {
-        "name": "player",
-        "opponent": "enemy",
-        "autopass": false,
-        "hidden": false,
-        "clickable": false
+        'name': 'player',
+        'opponent': 'enemy',
+        'autopass': false,
+        'hidden': false,
+        'clickable': false
       },
       {
-        "name": "enemy",
-        "opponent": "player",
-        "autopass": true,
-        "hidden": true,
-        "clickable": true
+        'name': 'enemy',
+        'opponent': 'player',
+        'autopass': true,
+        'hidden': true,
+        'clickable': true
       }
     ];
 

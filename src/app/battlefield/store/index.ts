@@ -1,6 +1,6 @@
-import { ActionReducerMap, createSelector, createFeatureSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 
-import { BattlefieldState, FieldState } from './model';
+import { BattlefieldState } from './model';
 
 import { battlefieldReducer } from './reducer';
 import * as fieldSelectors from './selectors';

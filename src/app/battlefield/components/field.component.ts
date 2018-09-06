@@ -1,14 +1,12 @@
-import { Component, OnInit, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-import { switchMap, filter, take, tap } from 'rxjs/operators';
 
 import { IField } from '../models/field';
 
 import { AppState } from '../../store/model';
 import * as fromAppStore from '../../store';
-import * as gameplayActions from '../../store/gameplay/actions';
 
 import { BattlefieldState } from '../store/model';
 import * as fromBattlefieldStore from '../store';
@@ -23,28 +21,28 @@ import { BattlefieldAutopassService } from '../services/autopass.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BattlefieldFieldComponent implements OnInit {
-  @Input() size: number = 10
-  @Input() ships: string[] = []
-  @Input() player: string
-  @Input() opponent: string
-  @Input() disabled: boolean = false
-  @Input() autopass: boolean = false
-  @Input() hidden: boolean = false
-  @Input() clickable: boolean = false
+  @Input() size = 10;
+  @Input() ships: string[] = [];
+  @Input() player: string;
+  @Input() opponent: string;
+  @Input() disabled = false;
+  @Input() autopass = false;
+  @Input() hidden = false;
+  @Input() clickable = false;
 
-  public field$: Observable<IField>
+  public field$: Observable<IField>;
 
   constructor(
     private appStore: Store<AppState>,
     private battlefieldStore: Store<BattlefieldState>,
-    private BattlefieldAutopassService: BattlefieldAutopassService
+    private battlefieldAutopassService: BattlefieldAutopassService
   ) {
 
   }
 
   ngOnInit() {
     this.appStore.pipe(select(fromAppStore.selectGameplayWasStarted)).subscribe((started) => {
-      if (started === false) return;
+      if (started === false) { return; }
 
       this.battlefieldStore.dispatch(new battlefieldActions.CreateFieldWithRandomShips({
         name: this.player,
@@ -56,11 +54,11 @@ export class BattlefieldFieldComponent implements OnInit {
     this.field$ = this.battlefieldStore.pipe(select(fromBattlefieldStore.selectFieldList, this.player));
 
     if (this.autopass) {
-      this.BattlefieldAutopassService.handler(this.player, this.opponent);
+      this.battlefieldAutopassService.handler(this.player, this.opponent);
     }
   }
 
-  trackByRow(index, row) {
+  trackByRow(index) {
     return index;
   }
 }

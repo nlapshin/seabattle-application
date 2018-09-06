@@ -31,19 +31,19 @@ export class AppPage {
   }
 
   getBattlefieldContainer() {
-    return element.all(by.tagName("app-battlefield"));
+    return element.all(by.tagName('app-battlefield'));
   }
 
   getBattlefields() {
-    return element.all(by.tagName("app-battlefield-field"));
+    return element.all(by.tagName('app-battlefield-field'));
   }
 
   getFreeBattlefieldCells(field) {
-    return field.all(by.css(".battlefield-cell:not(.battlefield-cell--missed):not(.battlefield-cell--damaged)"));
+    return field.all(by.css('.battlefield-cell:not(.battlefield-cell--missed):not(.battlefield-cell--damaged)'));
   }
 
   getDamagedBattlefieldCells(field) {
-    return field.all(by.css(".battlefield-cell--damaged"));
+    return field.all(by.css('.battlefield-cell--damaged'));
   }
 
   getPlayerField() {
@@ -71,17 +71,17 @@ export class AppPage {
   }
 
   async clickToRandomEnemyFreeCell() {
-    let cells = this.getEnemyFreeCells();
-    let count = await cells.count();
+    const cells = this.getEnemyFreeCells();
+    const count = await cells.count();
 
-    let randomCellIndex = random(count - 1);
-    let cell = cells.get(randomCellIndex);
+    const randomCellIndex = random(count - 1);
+    const cell = cells.get(randomCellIndex);
 
     cell.click();
   }
 
   async battlefieldGameEmulate() {
-    let startedButton = this.getStartButton();
+    const startedButton = this.getStartButton();
     startedButton.click();
 
     await browser.waitForAngular();
@@ -90,8 +90,8 @@ export class AppPage {
       await this.clickToRandomEnemyFreeCell();
 
       await browser.waitForAngular();
-    };
+    }
 
-    return Promise.resolve("end");
+    return Promise.resolve('end');
   }
 }
